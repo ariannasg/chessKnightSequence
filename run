@@ -1,0 +1,25 @@
+#!/usr/bin/env php
+<?php
+declare(strict_types=1);
+
+include_once('src/Models/ChessBoard.php');
+include_once('src/Exceptions/InvalidBoardPositionException.php');
+include_once('src/Exceptions/SequenceNotFoundException.php');
+
+use Models\ChessBoard;
+
+$total_num_of_args = $argc;
+
+if ($total_num_of_args != 3) {
+    echo "\nOps! Invalid Command! Please check the README file and try again with the appropriate format. "
+        . "Example:\n> php run A8 B7\n\n";
+} else {
+    $command_arg_1 = $argv[1];
+    $command_arg_2 = $argv[2];
+
+    $chess_board = new ChessBoard();
+
+    $chess_board->tryToFindValidSequence($command_arg_1, $command_arg_2);
+}
+
+
